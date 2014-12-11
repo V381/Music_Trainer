@@ -1,0 +1,429 @@
+.newNote {
+  margin-top: 40px; }
+  .newNote img {
+    width: 100px; }
+  .newNote p {
+    color: whitesmoke;
+    padding-top: 5px; }
+  .newNote:hover {
+    cursor: pointer; }
+
+.ledger, .ledgerToggle {
+  margin-top: 40px; }
+  .ledger img, .ledgerToggle img {
+    width: 100px; }
+  .ledger p, .ledgerToggle p {
+    color: whitesmoke;
+    padding-top: 5px; }
+  .ledger:hover, .ledgerToggle:hover {
+    cursor: pointer; }
+
+.ledgerToggle {
+  margin-top: 40px; }
+
+.reset {
+  margin-top: 40px; }
+  .reset img {
+    width: 100px; }
+  .reset p {
+    color: whitesmoke;
+    padding-top: 5px; }
+  .reset:hover {
+    cursor: pointer; }
+  .reset p {
+    padding-top: -10px; }
+
+.help, .helpToggle {
+  margin-top: 50px; }
+  .help img, .helpToggle img {
+    width: 100px; }
+  .help p, .helpToggle p {
+    color: whitesmoke;
+    padding-top: 5px; }
+  .help:hover, .helpToggle:hover {
+    cursor: pointer; }
+  .help p, .helpToggle p {
+    padding-top: 20px; }
+
+.icons {
+  display: block;
+  text-align: center; }
+
+.cpanel {
+  width: 200px;
+  background-color: #191919;
+  height: 100%;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 2px black;
+  text-align: center;
+  float: left;
+  z-index: 10;
+  position: fixed; }
+  .cpanel h1 {
+    padding: 30px 0px 30px 0px;
+    font-size: 25px;
+    text-align: center;
+    color: #cbcbcb;
+    width: inherit;
+    font-family: "Georgia"; }
+    .cpanel h1:first-letter {
+      font-size: 35px;
+      color: red; }
+
+.score {
+  position: absolute;
+  bottom: 0;
+  left: 0; }
+
+.positive {
+  float: left;
+  width: 100px;
+  padding-bottom: 20px; }
+  .positive p {
+    color: green;
+    font-size: 30px; }
+
+.negative {
+  float: left;
+  width: 100px; }
+  .negative p {
+    color: red;
+    font-size: 30px; }
+
+.wrap0 {
+  width: 800px;
+  margin: 0 auto;
+  position: relative;
+  top: 300px; }
+
+.wrap0 img {
+  position: absolute; }
+
+.wrap p {
+  font-size: 35px;
+  text-align: center;
+  padding-top: 2px;
+  color: #8b8b8b; }
+
+.outerLines {
+  position: relative; }
+
+.line-3 {
+  background-color: #8b8b8b;
+  height: 5px;
+  width: 100%;
+  top: -90px;
+  position: absolute; }
+
+.line-2 {
+  background-color: #8b8b8b;
+  height: 5px;
+  width: 100%;
+  top: -60px;
+  position: absolute; }
+
+.line-1 {
+  background-color: #8b8b8b;
+  height: 5px;
+  width: 100%;
+  position: absolute;
+  top: -30px; }
+
+.line1 {
+  background-color: black;
+  height: 5px;
+  width: 100%;
+  z-index: 1; }
+
+.D {
+  position: absolute;
+  top: -5px;
+  left: 64px;
+  width: 127px; }
+
+.E {
+  position: absolute;
+  top: -22px;
+  left: 120px;
+  width: 127px; }
+
+.F {
+  position: absolute;
+  top: -42px;
+  left: 176px;
+  width: 127px; }
+
+.G {
+  position: absolute;
+  top: -56px;
+  left: 232px;
+  width: 127px; }
+
+.A {
+  position: absolute;
+  top: -78px;
+  left: 288px;
+  width: 127px; }
+
+.B {
+  position: absolute;
+  top: -92px;
+  left: 380px;
+  width: 127px; }
+
+.C {
+  position: absolute;
+  top: -110px;
+  left: 434px;
+  width: 127px; }
+
+.D1 {
+  position: absolute;
+  top: -125px;
+  left: 488px;
+  width: 127px; }
+
+.E1 {
+  position: absolute;
+  top: -145px;
+  left: 542px;
+  width: 127px; }
+
+.F1 {
+  position: absolute;
+  top: -160px;
+  left: 596px;
+  width: 127px; }
+
+.line1 .G1 {
+  position: absolute;
+  top: -180px;
+  left: 650px;
+  width: 127px; }
+
+.E0 {
+  position: absolute;
+  top: 100px;
+  left: 64px;
+  width: 127px; }
+
+.F0 {
+  position: absolute;
+  top: 83px;
+  left: 120px;
+  width: 127px; }
+
+.G0 {
+  position: absolute;
+  top: 66px;
+  left: 176px;
+  width: 127px; }
+
+.A0 {
+  position: absolute;
+  top: 49px;
+  left: 232px;
+  width: 127px; }
+
+.B0 {
+  position: absolute;
+  top: 29px;
+  left: 288px;
+  width: 127px; }
+
+.C0 {
+  position: absolute;
+  top: 15px;
+  left: 380px;
+  width: 127px; }
+
+.A1 {
+  position: absolute;
+  top: -193px;
+  left: 414px;
+  width: 127px; }
+
+.B1 {
+  position: absolute;
+  top: -210px;
+  left: 470px;
+  width: 127px; }
+
+.C1 {
+  position: absolute;
+  top: -222px;
+  left: 532px;
+  width: 127px; }
+
+.D2 {
+  position: absolute;
+  top: -241px;
+  left: 586px;
+  width: 127px; }
+
+.E2 {
+  position: absolute;
+  top: -251px;
+  left: 640px;
+  width: 127px; }
+
+.F2 {
+  position: absolute;
+  top: -271px;
+  left: 691px;
+  width: 127px; }
+
+.line2 {
+  background-color: black;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px; }
+
+.line3 {
+  background-color: black;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px; }
+
+.line4 {
+  background-color: black;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px; }
+  .line4 img {
+    z-index: -1;
+    position: absolute;
+    top: -64px;
+    height: 268px; }
+
+.line5 {
+  background-color: black;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px; }
+
+.line6 {
+  background-color: #8b8b8b;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px; }
+
+.line7 {
+  background-color: #8b8b8b;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px; }
+
+.line8 {
+  background-color: #8b8b8b;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px; }
+
+.wrap2 {
+  padding-top: 150px; }
+
+.zz {
+  list-style-type: none; }
+  .zz:hover {
+    cursor: pointer; }
+
+.zz li {
+  display: inline-block;
+  font-size: 80px;
+  padding: 15px;
+  background-color: #191919;
+  color: white;
+  border-radius: 20px;
+  width: 80px;
+  box-shadow: 4px 4px 4px black;
+  text-align: center;
+  -webkit-transition: 0.3s ease-in-out; }
+  .zz li:hover {
+    color: #cbcbcb; }
+
+.note1 {
+  background-color: red;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: 30px; }
+
+.note2 {
+  background-color: blue;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: 70px; }
+
+.note3 {
+  background-color: green;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: 110px; }
+
+.note4 {
+  background-color: #202020;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: 150px; }
+
+.note5 {
+  background-color: yellow;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: 200px; }
+
+.alg1 {
+  box-sizing: border-box; }
+
+.butt {
+  position: relative; }
+
+.wrongNote p {
+  text-align: center;
+  padding-top: 20px; }
+
+div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: "";
+  content: none; }
+
+q:before, q:after {
+  content: "";
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }

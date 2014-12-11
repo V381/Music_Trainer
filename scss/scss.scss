@@ -1,0 +1,369 @@
+@import "reset";
+$wid : 100px;
+$ws : whitesmoke;
+$black : #000000;
+
+@mixin default($bg, $pos){
+  background-color: $bg;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: $pos;
+}
+
+@mixin imgDefault(){
+  img {
+    width: $wid;
+  }
+  p {
+    color: $ws;
+    padding-top: 5px;
+  }
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+@mixin lines(){
+  background-color: $black;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.newNote{
+  margin-top: 40px;
+  @include imgDefault()
+}
+
+.ledger{
+  margin-top: 40px;
+  @include imgDefault()
+}
+
+.ledgerToggle{
+  margin-top: 40px;
+  @extend .ledger;
+}
+
+.reset{
+  margin-top: 40px;
+  @include imgDefault();
+    p{
+    padding-top: -10px;
+  }
+}
+
+.help{
+  margin-top: 50px;
+  @include imgDefault();
+  p{
+    padding-top: 20px;
+  }
+
+}
+
+.helpToggle{
+  @extend .help;
+}
+
+.icons{
+  display: block;
+  text-align: center;
+}
+
+
+.cpanel{
+  width: 200px;
+  background-color: #191919;
+  height: 100%;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 2px black;
+  text-align: center;
+  float: left;
+  z-index: 10;
+  position: fixed;
+  h1 {
+    padding: 30px 0px 30px 0px;
+    font-size: 25px;
+    text-align: center;
+    color: #cbcbcb;
+    width: inherit;
+    font-family: "Georgia";
+    &:first-letter {
+      font-size: 35px;
+      color: red;
+    }
+  }
+}
+
+.score{
+  position: absolute; bottom: 0; left: 0;
+}
+.positive{
+  float: left;
+  width: 100px;
+  padding-bottom: 20px;
+  p{
+    color: green;
+    font-size: 30px;
+  }
+}
+
+.negative{
+  float: left;
+  width: 100px;
+  p{
+    color: red;
+    font-size: 30px;
+  }
+}
+
+
+
+.wrap0{
+  width : 800px;
+  margin : 0 auto;
+  position: relative;
+  top: 300px;
+}
+
+.wrap0 img{
+  position: absolute;
+}
+
+
+.wrap p{
+  font-size : 35px;
+  text-align : center;
+  padding-top : 2px;
+  color: #8b8b8b;
+}
+
+.outerLines{
+  position : relative;
+}
+
+.line-3{
+  background-color: #8b8b8b;
+  height: 5px;
+  width: 100%;
+  top: -90px;
+  position : absolute;
+}
+
+.line-2{
+  background-color: #8b8b8b;
+  height: 5px;
+  width: 100%;
+  top: -60px;
+  position : absolute;
+}
+.line-1{
+  background-color: #8b8b8b;
+  height: 5px;
+  width: 100%;
+  position : absolute;
+  top: -30px;
+}
+
+.line1{
+  background-color: $black;
+  height: 5px;
+  width: 100%;
+  z-index: 1;
+}
+
+@mixin notePosition($top, $left){
+  position: absolute;
+  top : $top;
+  left : $left;
+  width: 127px;
+}
+
+.D{
+  @include notePosition(-5px, 64px);
+}
+// -17, +56
+.E{
+  @include notePosition(-22px, 120px);
+}
+.F{
+  @include notePosition(-42px, 176px);
+}
+.G{
+  @include notePosition(-56px, 232px);
+}
+.A{
+  @include notePosition(-78px, 288px);
+}
+.B{
+  @include notePosition(-92px, 380px);
+}
+.C{
+  @include notePosition(-110px, 434px);
+}
+.D1{
+  @include notePosition(-125px, 488px);
+}
+.E1{
+  @include notePosition(-145px, 542px);
+}
+.F1{
+  @include notePosition(-160px, 596px);
+}
+.line1 .G1{
+  @include notePosition(-180px, 650px);
+}
+.E0{
+  @include notePosition(100px, 64px);
+}
+.F0{
+  @include notePosition(83px, 120px);
+}
+.G0{
+  @include notePosition(66px, 176px);
+}
+.A0{
+  @include notePosition(49px, 232px);
+}
+.B0{
+  @include notePosition(29px, 288px);
+}
+.C0{
+  @include notePosition(15px, 380px);
+}
+
+.A1{
+  @include notePosition(-193px, 414px);
+}
+
+.B1{
+  @include notePosition(-210px, 470px);
+}
+
+.C1{
+  @include notePosition(-222px, 532px);
+}
+
+.D2{
+  @include notePosition(-241px, 586px);
+}
+
+.E2{
+  @include notePosition(-251px, 640px);
+}
+
+.F2{
+  @include notePosition(-271px, 691px);
+}
+
+.line2{
+  background-color: $black;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.line3{
+  background-color: $black;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px;
+}
+.line4{
+  background-color: $black;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px;
+  img {
+    z-index: -1;
+    position: absolute;
+    top: -64px;
+    height: 268px;
+  }
+}
+.line5{
+  background-color: $black;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px;
+}
+.line6{
+  background-color: #8b8b8b;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px;
+}
+.line7{
+  background-color: #8b8b8b;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px;
+}
+.line8{
+  background-color: #8b8b8b;
+  height: 5px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.wrap2{
+  padding-top: 150px;
+}
+
+.zz{
+  list-style-type: none;
+  &:hover{
+    cursor: pointer;
+  }
+}
+.zz li{
+  display : inline-block;
+  font-size : 80px;
+  padding : 15px;
+  background-color : #191919;
+  color : white;
+  border-radius : 20px;
+  width : 80px;
+  box-shadow : 4px 4px 4px black;
+  text-align : center;
+  -webkit-transition : 0.3s ease-in-out;
+  &:hover{
+    color: #cbcbcb;
+  }
+}
+
+
+
+.note1{
+  @include default(red, 30px)
+}
+.note2{
+  @include default(blue, 70px)
+}
+.note3{
+  @include default(green, 110px)
+}
+.note4{
+  @include default(#202020, 150px)
+}
+.note5{
+  @include default(yellow, 200px)
+}
+
+.alg1{
+  box-sizing: border-box;
+}
+
+.butt{
+  position: relative;
+}
+
+.wrongNote p{
+  text-align: center;
+  padding-top: 20px;
+}
+
+@include meyer-reset;
+
