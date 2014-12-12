@@ -13,5 +13,5 @@ Check it out here: http://v381.github.io/Music_Trainer/html.html
   <li>H -> Help </li>
   <li>L -> Ledger Lines</li>
   <li>R -> Reset Score</li>
-  
+  <li>CDEFGAB -> Same letters on keyboard</li>
 </ul>
