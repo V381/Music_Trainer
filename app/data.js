@@ -1,4 +1,6 @@
 // Create EFAF, so when .help icon/div is clicked, append them to music lines
+
+
 var help = document.querySelector(".help");
 var niz = ["E", "C", "A", "F",""];
 wrap = document.querySelector(".innerLines").children;
@@ -27,8 +29,12 @@ var positiveScore = 0;
 var negativeScore = 0;
 
 
-
 // Get the divs and codes for keyboard buttons
-
-var keyDivs = [newNote, ledger, resetScore, help];
-var keyCodes = [32, 76, 82, 72];
+var liKeyCodes = $(".zz > li");
+var keyDivs = [newNote, ledger, resetScore, help,
+    liKeyCodes[0], liKeyCodes[1],
+    liKeyCodes[2], liKeyCodes[3],
+    liKeyCodes[4], liKeyCodes[5],
+    liKeyCodes[6]
+];
+var keyCodes = [32, 76, 82, 72, 67, 68, 69, 70, 71, 65,66];
