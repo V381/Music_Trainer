@@ -151,7 +151,7 @@ var Module = (function(){
 
         // Added event listener to body element.
         // Then iterated through map and if numbers match keycodes trigger then event.
-        // Context of "this" was lost when we created anonymous callback function
+        // Context of "this" was lost when I created anonymous callback function
         // So with bind(this), this is pointing where it should be.
 
         keyCodesImplementation : function(){
