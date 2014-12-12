@@ -1,12 +1,29 @@
+/*
+*  Author : Pavle Paunovic
+* */
 
 
 var Module = (function(){
 
     // Private
 
+    // Map for keyboard key codes
+    var keysMap = {};
+
+
+
     // Public
 
     return {
+
+        // Append to keysMap object, name of properties are keycode numbers
+        // Value of properties are control panel icons(or divs)
+
+        createKeysMap : function(){
+            for (var i = 0; i < keyDivs.length; i++){
+                keysMap[keyCodes[i]] = keyDivs[i];
+            }
+        },
 
         help : function(){
             help.addEventListener("click", function(e){
@@ -130,9 +147,27 @@ var Module = (function(){
                 $(".positive > p").html(positiveScore);
                 $(".negative > p").html(negativeScore);
             });
-        }
-    };
+        },
 
+        // Added event listener to body element.
+        // Then iterated through map and if numbers match keycodes trigger then event.
+        // Context of "this" was lost when we created anonymous callback function
+        // So with bind(this), this is pointing where it should be.
+
+        keyCodesImplementation : function(){
+            document.getElementsByTagName("body")[0].addEventListener("keydown", function(e){
+            for (var i in keysMap){
+                if (keysMap.hasOwnProperty(i)){
+                    if (e.keyCode === Number(i)){
+                        keysMap[i].click();
+                    }
+                }
+            }
+
+            }.bind(this), false);
+        }
+
+    };
 
 
 
@@ -144,3 +179,5 @@ Module.ledger();
 Module.newNote();
 Module.resetScore();
 Module.score();
+Module.createKeysMap();
+Module.keyCodesImplementation();
