@@ -25,3 +25,10 @@ var score = document.querySelector(".zz");
 var resetScore = document.querySelector(".reset");
 var positiveScore = 0;
 var negativeScore = 0;
+
+
+
+// Get the divs and codes for keyboard buttons
+
+var keyDivs = [newNote, ledger, resetScore, help];
+var keyCodes = [32, 76, 82, 72];
