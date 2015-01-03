@@ -7,7 +7,7 @@ var Module = (function(){
 
     // Private
 
-    // Map for keyboard key codes
+    // Map/Hash table for keyboard key codes
     var keysMap = {};
 
 
@@ -16,7 +16,7 @@ var Module = (function(){
 
     return {
 
-        // Append to keysMap object, name of properties are keycode numbers
+        // Append to keysMap object/hash, name of properties are keycode numbers
         // Value of properties are control panel icons(or divs) and li elements
 
         createKeysMap : function(){
