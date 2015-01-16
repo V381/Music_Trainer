@@ -372,11 +372,8 @@ $wid2 : 90px;
   padding-top: 20px;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1377px){
 
-  body{
-    background-color: red;
-  }
 
   .newNote, .help, .ledger, .reset{
     img{
@@ -389,7 +386,7 @@ $wid2 : 90px;
 
   .wrap0{
     position: relative;
-    top: 250px;
+    top: 200px;
   }
 
 }
