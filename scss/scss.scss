@@ -2,6 +2,7 @@
 $wid : 100px;
 $ws : whitesmoke;
 $black : #000000;
+$wid2 : 90px;
 
 @mixin default($bg, $pos){
   background-color: $bg;
@@ -9,6 +10,12 @@ $black : #000000;
   width: 20px;
   position: relative;
   top: $pos;
+}
+
+@mixin AdaptiveImg(){
+  img{
+    width: $wid2;
+  }
 }
 
 @mixin imgDefault(){
@@ -363,6 +370,28 @@ $black : #000000;
 .wrongNote p{
   text-align: center;
   padding-top: 20px;
+}
+
+@media screen and (max-width: 768px){
+
+  body{
+    background-color: red;
+  }
+
+  .newNote, .help, .ledger, .reset{
+    img{
+      width: 90px;
+    }
+  }
+  .newNote{
+    margin-top: 10px;
+  }
+
+  .wrap0{
+    position: relative;
+    top: 250px;
+  }
+
 }
 
 @include meyer-reset;
