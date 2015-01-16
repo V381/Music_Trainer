@@ -94,7 +94,7 @@
   width: 800px;
   margin: 0 auto;
   position: relative;
-  top: 250px; }
+  top: 300px; }
 
 .wrap0 img {
   position: absolute; }
@@ -387,7 +387,10 @@
   text-align: center;
   padding-top: 20px; }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
+  body {
+    background-color: red; }
+
   .newNote img, .help img, .helpToggle img, .ledger img, .ledgerToggle img, .reset img {
     width: 90px; }
 
