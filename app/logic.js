@@ -16,8 +16,8 @@ var Module = (function(){
 
     return {
 
-        // Append to keysMap object/hash, name of properties are keycode numbers
-        // Value of properties are control panel icons(or divs) and li elements
+        // Append to keysMap object/hash, name/keys of properties are keycode numbers
+        // Values of properties are control panel icons(or divs) and li elements
 
         createKeysMap : function(){
             for (var i = 0; i < keyDivs.length; i++){
@@ -44,7 +44,7 @@ var Module = (function(){
             }, false);
         },
 
-        // Create every note for each of the music lines(that includes ledger to)
+        // Create every note for each of the music lines(that includes ledger too)
         // Same algorithm is used as above for toggling element(or when second time is clicked on icon)
         // moreToLife/topLedgerNotes/bottomLedger values == map, where notes will be appended.
 
@@ -150,9 +150,9 @@ var Module = (function(){
         },
 
         // Added event listener to body element.
-        // Then iterated through map and if numbers match keycodes trigger then event.
+        // Then iterate through map and if numbers match keycodes trigger the event.
         // Context of "this" was lost when we created anonymous callback function
-        // So with bind(this), this is in right contect
+        // So with bind(this), this is in right context
 
         keyCodesImplementation : function(){
             document.getElementsByTagName("body")[0].addEventListener("keydown", function(e){
