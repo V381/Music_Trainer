@@ -134,6 +134,8 @@
   height: 5px;
   width: 100%;
   z-index: 1; }
+  .line1 img {
+    transition: 0.2s ease-in-out; }
 
 .D {
   position: absolute;
