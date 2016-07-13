@@ -179,6 +179,9 @@ $wid2 : 90px;
   height: 5px;
   width: 100%;
   z-index: 1;
+  img{
+    transition: 0.2s ease-in-out;
+  }
 }
 
 @mixin notePosition($top, $left){
