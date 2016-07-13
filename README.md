@@ -21,4 +21,5 @@ Check it out here: http://v381.github.io/Music_Trainer/html.html
 
 
 Update 1 : Design adapted for laptop computers
+<br>
 Update 2 : Note Animation
