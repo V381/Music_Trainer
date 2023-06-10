@@ -23,3 +23,6 @@ Check it out here: http://v381.github.io/Music_Trainer/html.html
 Update 1 : Design adapted for laptop computers
 <br>
 Update 2 : Note Animation
+
+<h3>Jun 2023</h3>
+Update 3 : Design adapter for tablets and mobile phones, new icons, new layout
