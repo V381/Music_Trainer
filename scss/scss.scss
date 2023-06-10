@@ -1,4 +1,5 @@
 @import "reset";
+@import "mobile-layout/mobile-layout.scss";
 $wid : 100px;
 $ws : whitesmoke;
 $black : #000000;
@@ -79,7 +80,6 @@ $wid2 : 90px;
   text-align: center;
 }
 
-
 .cpanel{
   width: 200px;
   background-color: #191919;
@@ -90,6 +90,9 @@ $wid2 : 90px;
   float: left;
   z-index: 10;
   position: fixed;
+  i {
+    display: none;
+  }
   h1 {
     padding: 30px 0px 30px 0px;
     font-size: 25px;
@@ -100,6 +103,24 @@ $wid2 : 90px;
     &:first-letter {
       font-size: 35px;
       color: red;
+    }
+  }
+  @media (max-width: 1415px) {
+    height: 7% !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    h1 {
+      display: none;
+    }
+  }
+  @media (max-width: 1215px) and (orientation: portrait){
+    height: 3% !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    h1 {
+      display: none;
     }
   }
 }
@@ -320,6 +341,9 @@ $wid2 : 90px;
 
 .wrap2{
   padding-top: 150px;
+  @media (max-width: 968px) {
+    padding-top: 70px;
+  }
 }
 
 .zz{
@@ -375,6 +399,60 @@ $wid2 : 90px;
   padding-top: 20px;
 }
 
+@media (max-width: 1215px) {
+  .cpanel {
+
+    i {
+      display: block;
+    }
+
+    .ledger {
+      margin-top: 10px;
+    }
+
+    .help {
+      margin-top: 10px;
+    }
+
+    .reset {
+      margin-top: 10px;
+    }
+
+    .fa-music {
+      font-size: 30px;
+      color: white;
+      padding-right: 30px;
+    }
+
+    .fa-bars {
+      font-size: 30px;
+      color: white;
+      padding-right: 30px;
+    }
+
+    .fa-circle-o-notch {
+      font-size: 30px;
+      color: white;
+      padding-right: 30px;
+    }
+
+    .fa-question-circle {
+      font-size: 30px;
+      color: white;
+      padding-right: 30px;
+    }
+    
+  }
+  .newNote, .help, .ledger, .reset{
+    img{
+      display: none;
+    }
+    p{
+      display: none;
+    }
+  }
+}
+
 @media screen and (max-width: 1377px){
 
 
@@ -393,6 +471,21 @@ $wid2 : 90px;
   }
 
 }
+
+@media (max-width: 968px) {
+  .cpanel {
+    height: 8%;
+   }
+}
+
+@media only screen and (min-device-width: 480px) 
+                   and (max-device-width: 920px) 
+                   and (orientation: landscape) {
+                    .cpanel {
+                      height: 15%;
+                     }
+}
+
 
 @include meyer-reset;
 
