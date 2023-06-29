@@ -1,6 +1,8 @@
 <h3>Music Trainer written in Javascript</h3>
 ==============
 
+<h3>First version of application written and published in 2014</h3>
+
 Goal of this web app is to teach you music notes. 
 Only requirement is to know basic notes(CDEFGAB) on your chosen instrument.
 Clicking on New Note or pressing space button will show note randomly on music staff.
@@ -25,4 +27,5 @@ Update 1 : Design adapted for laptop computers
 Update 2 : Note Animation
 
 <h3>Jun 2023</h3>
-Update 3 : Design adapter for tablets and mobile phones, new icons, new layout
+Update 3 : Design adapted for tablets and mobile phones, new icons, new layout
+Update 4 : Little refactoring
