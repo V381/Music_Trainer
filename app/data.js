@@ -1,40 +1,28 @@
-// Create EFAF, so when .help icon/div is clicked, append them to music lines
+const help = document.querySelector(".help");
+const niz = ["E", "C", "A", "F", ""];
+const wrap = document.querySelector(".innerLines").children;
+const w = document.querySelector(".wrap");
+const wrapList = document.querySelector(".wrap2");
+const outerLines = document.querySelector(".outerLines");
 
+const line1 = document.querySelector(".line1");
+const newNote = document.querySelector(".newNote");
+let moreToLife = ["D", "E", "F", "G", "A", "B", "C", "D1", "E1", "F1", "G1"];
+const topLedgerNotes = ["A1", "B1", "C1", "D2", "E2", "F2"];
+const bottomLedgerNotes = ["E0", "F0", "G0", "A0", "B0", "C0"].reverse();
 
-var help = document.querySelector(".help");
-var niz = ["E", "C", "A", "F",""];
-wrap = document.querySelector(".innerLines").children;
-var w = document.querySelector(".wrap");
-var wrapList = document.querySelector(".wrap2");
-var p = document.createElement("p");
-var outerLines = document.querySelector(".outerLines");
+const ledger = document.querySelector(".ledger");
+const outerLedger = ["line-1", "line-2", "line-3"];
+const ledgerName = ["line6", "line7", "line8"];
 
+const score = document.querySelector(".zz");
+const resetScore = document.querySelector(".reset");
+let positiveScore = 0;
+let negativeScore = 0;
 
-
-var line1 = document.querySelector(".line1");
-var newNote = document.querySelector(".newNote");
-var moreToLife = ["D", "E", "F", "G", "A", "B", "C", "D1", "E1", "F1", "G1"];
-var topLedgerNotes = ["A1", "B1", "C1", "D2", "E2", "F2"];
-var bottomLedgerNotes = ["E0", "F0", "G0", "A0", "B0", "C0"]; // DONT FORGET TO REVERSE
-
-// Ledger lines are named with -1-2-3 etc.
-
-var ledger = document.querySelector(".ledger");
-var outerLedger = ["line-1", "line-2", "line-3"];
-var ledgerName = ["line6", "line7", "line8"];
-
-var score = document.querySelector(".zz");
-var resetScore = document.querySelector(".reset");
-var positiveScore = 0;
-var negativeScore = 0;
-
-
-// Get the divs and codes for keyboard buttons
-var liKeyCodes = $(".zz > li");
-var keyDivs = [newNote, ledger, resetScore, help,
-    liKeyCodes[0], liKeyCodes[1],
-    liKeyCodes[2], liKeyCodes[3],
-    liKeyCodes[4], liKeyCodes[5],
-    liKeyCodes[6]
+const liKeyCodes = $(".zz > li");
+const keyDivs = [
+  newNote, ledger, resetScore, help,
+  ...liKeyCodes.toArray()
 ];
-var keyCodes = [32, 76, 82, 72, 67, 68, 69, 70, 71, 65,66];
+const keyCodes = [32, 76, 82, 72, 67, 68, 69, 70, 71, 65, 66];
