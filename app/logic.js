@@ -2,6 +2,8 @@
 const Module = (function () {
     const keysMap = {};
     let isBassClef = false;
+    let positiveScore = 0;
+    let negativeScore = 0;
     
     const trebleNotes = {
         standardNotes: ["D", "E", "F", "G", "A", "B", "C", "D1", "E1", "F1", "G1"],
@@ -16,10 +18,30 @@ const Module = (function () {
     };
     
     let currentNotes = trebleNotes.standardNotes;
-    let positiveScore = 0;
-    let negativeScore = 0;
 
     return {
+        initializeStatsPanel() {
+            const statsButton = document.querySelector('.statsMenu');
+            const statsPanel = document.querySelector('.stats-panel');
+        
+            if (statsButton && statsPanel) {
+                statsButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    statsPanel.classList.toggle('collapsed');
+                    console.log('Stats button clicked'); // Debug log
+                });
+        
+                document.addEventListener('click', (e) => {
+                    if (!statsPanel.contains(e.target) && 
+                        !statsButton.contains(e.target) && 
+                        !statsPanel.classList.contains('collapsed')) {
+                        statsPanel.classList.add('collapsed');
+                    }
+                });
+            }
+        },
+        
         createKeysMap() {
             for (let i = 0; i < keyDivs.length; i++) {
                 keysMap[keyCodes[i]] = keyDivs[i];
@@ -68,21 +90,26 @@ const Module = (function () {
                     src: noteElement.src,
                     className: currentNotes[Math.floor(Math.random() * currentNotes.length)]
                 });
+                
+                StatisticsModule.updateStatsDisplay();
             });
         },
 
         help() {
             help.addEventListener("click", function (e) {
                 const wrapElements = Array.from(wrap);
-                const currentNoteNames = isBassClef ? 
-                    ["G2", "E3", "C3", "A2", ""] : 
-                    ["E", "C", "A", "F", ""];
-
+                const trebleNoteNames = ["E", "C", "A", "F"];  
+                const bassNoteNames = ["A", "C", "E", "G"].reverse();    
+                
+                const currentNoteNames = isBassClef ? bassNoteNames : trebleNoteNames;
+        
                 if (help.className !== "helpToggle") {
                     wrapElements.forEach((wrapElement, i) => {
-                        const p = document.createElement("p");
-                        p.appendChild(document.createTextNode(currentNoteNames[i]));
-                        wrapElement.appendChild(p);
+                        if (currentNoteNames[i]) {  
+                            const p = document.createElement("p");
+                            p.appendChild(document.createTextNode(currentNoteNames[i]));
+                            wrapElement.appendChild(p);
+                        }
                     });
                     help.className = "helpToggle";
                 } else {
@@ -146,6 +173,8 @@ const Module = (function () {
                         AnimationModule.animateScore(scoreElement[0], true);
                         AnimationModule.showFeedback(true);
                         
+                        StatisticsModule.recordAnswer(oldNote, true);
+                        
                         setTimeout(() => {
                             Module.randomAlgorithm();
                             wrongNote.html("");
@@ -160,6 +189,8 @@ const Module = (function () {
                         
                         const displayNote = oldNote.replace(/\d+/g, '');
                         AnimationModule.showFeedback(false, displayNote);
+                        
+                        StatisticsModule.recordAnswer(oldNote, false);
                         
                         setTimeout(() => {
                             Module.randomAlgorithm();
@@ -187,6 +218,7 @@ const Module = (function () {
                 negativeScore = 0;
                 $(".positive > p").html(positiveScore);
                 $(".negative > p").html(negativeScore);
+                StatisticsModule.resetStats();
             });
         },
 
@@ -222,6 +254,9 @@ const Module = (function () {
             this.createKeysMap();
             this.toggleClef();
             AnimationModule.init();
+            StatisticsModule.init();
+            this.initializeStatsPanel();
+            
         }
     };
 })();

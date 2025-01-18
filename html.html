@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Music Trainer</title>
     <link type="text/css" rel="stylesheet" href="scss/scss.css">
+    <link type="text/css" rel="stylesheet" href="scss/animations.css">
+    <link type="text/css" rel="stylesheet" href="scss/statistics.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="shortcut icon" href="icons/double-quaver.png">
     <meta name="description" content="Javascript Music Trainer">
@@ -12,118 +14,152 @@
 </head>
 
 <body>
+    <header>
+        <section class="cpanel">
+            <h1>Music Trainer</h1>
+        
+            <div class="newNote">
+                <i class="fa-solid fa-music" aria-hidden="true"></i>
+                <img src="icons/newNote.png">
+                <p>New note</p>
+            </div>
+        
+            <div class="ledger0">
+                <div class="ledger">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                    <img src="icons/ledgerlines.png">
+                    <p>Ledger Lines</p>
+                </div>
+            </div>
+        
+            <div class="reset">
+                <i class="fa-solid fa-rotate" aria-hidden="true"></i>
+                <img src="icons/reset.png">
+                <p>Reset Score</p>
+            </div>
+        
+            <div class="help">
+                <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+                <img src="icons/help.png">
+                <p>Help</p>
+            </div>
+        
+            <div class="bassClef">
+                <img src="icons/bass-clef-svgrepo-com.svg" alt="Bass Clef">
+                <p class="treble-clef">Bass Clef</p>
+            </div>
 
-        <header>
+            <div class="statsMenu toggle-stats">
+                <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                <p>Statistics</p>
+            </div>
+        
+        
+            <div class="score">
+                <div class="positive">
+                    <p>0</p>
+                </div>
+                <div class="negative">
+                    <p>0</p>
+                </div>
+            </div>
+        </section>
+    </header>
 
-            <section class="cpanel">
-                <h1>Music Trainer</h1>
-            
-                <div class="newNote">
-                    <i class="fa-solid fa-music" aria-hidden="true"></i>
-                    <img src="icons/newNote.png">
-                    <p>New note</p>
+    <main>
+        <div class="wrap0">
+            <section class="wrap">
+                <div class="outerLines">
                 </div>
-            
-                <div class="ledger0">
-                    <div class="ledger">
-                        <i class="fa-solid fa-bars" aria-hidden="true"></i>
-                        <img src="icons/ledgerlines.png">
-                        <p>Ledger Lines</p>
+
+                <div class="innerLines">
+                    <div class="line1">
+                        <img src="icons/singleNote.png" class="D">
                     </div>
-                </div>
-            
-                <div class="reset">
-                    <i class="fa-solid fa-rotate" aria-hidden="true"></i>
-                    <img src="icons/reset.png">
-                    <p>Reset Score</p>
-                </div>
-            
-                <div class="help">
-                    <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
-                    <img src="icons/help.png">
-                    <p>Help</p>
-                </div>
-            
-                <div class="bassClef">
-                    <img src="icons/bass-clef-svgrepo-com.svg" alt="Bass Clef">
-                    <p class="treble-clef">Bass Clef</p>
-                </div>
-            
-                <div class="score">
-                    <div class="positive">
-                        <p>0</p>
+                    <div class="line2">
                     </div>
-                    <div class="negative">
-                        <p>0</p>
+                    <div class="line3">
+                    </div>
+                    <div class="line4">
+                        <div class="treble">
+                            <img src="icons/treble.gif">
+                        </div>
+                    </div>
+                    <div class="line5">
                     </div>
                 </div>
             </section>
 
-        </header>
+            <section class="wrap2">
+                <ul class="zz">
+                    <li>C</li>
+                    <li>D</li>
+                    <li>E</li>
+                    <li>F</li>
+                    <li>G</li>
+                    <li>A</li>
+                    <li>B</li>
+                </ul>
+                <div class="wrongNote">
+                    <p></p>
+                </div>
+            </section>
+        </div>
+    </main>
 
+    <div class="stats-panel collapsed">
+        <div class="stats-header">
+            <h2>Practice Statistics</h2>
+        </div>
 
-        <main>
-
-            <div class="wrap0">
-                <section class="wrap">
-
-                    <div class="outerLines">
-
-                    </div>
-
-                    <div class="innerLines">
-                        <div class="line1">
-                            <img src="icons/singleNote.png" class="D">
-                        </div>
-                        <div class="line2">
-
-                        </div>
-                        <div class="line3">
-
-                        </div>
-                        <div class="line4">
-                            <div class="treble">
-                                <img src="icons/treble.gif">
-                            </div>
-                        </div>
-
-                        <div class="line5">
-                        </div>
-                    </div>
-
-                </section>
-
-                <section class="wrap2">
-
-                    <ul class="zz">
-
-                        <li>C</li>
-                        <li>D</li>
-                        <li>E</li>
-                        <li>F</li>
-                        <li>G</li>
-                        <li>A</li>
-                        <li>B</li>
-
-                    </ul>
-                    <div class="wrongNote">
-                        <p></p>
-                    </div>
-                </section>
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-label">Accuracy</div>
+                    <div class="stat-value accuracy accuracy-value">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Current Streak</div>
+                    <div class="stat-value streak current-streak">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Best Streak</div>
+                    <div class="stat-value streak best-streak">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Practice Time</div>
+                    <div class="stat-value time practice-time">00:00:00</div>
+                </div>
             </div>
+        </div>
+        
+        <div class="stats-section">
+            <h3>Recent Activity</h3>
+            <div class="recent-activity">
+            </div>
+        </div>
+    </div>
 
-        </main>
-
-
+    <script>
+        const wrap = document.querySelectorAll('.innerLines div');
+        const help = document.querySelector('.help');
+        const ledger = document.querySelector('.ledger');
+        const newNote = document.querySelector('.newNote');
+        const resetScore = document.querySelector('.reset');
+        const score = document.querySelector('.zz');
+        const w = document.querySelector('.wrap');
+        const outerLines = document.querySelector('.outerLines');
+        
+        const ledgerName = ['line6', 'line7', 'line8'];
+        const outerLedger = ['line-1', 'line-2', 'line-3'];
+        
+        const keyDivs = document.querySelectorAll('.zz li');
+        const keyCodes = [67, 68, 69, 70, 71, 65, 66];
+    </script>
 
     <script src="app/external/jquery-2.1.1.min.js"></script>
-    <script src="app/data.js"></script>
     <script src="app/animations.js"></script>
+    <script src="app/statistics.js"></script>
     <script src="app/logic.js"></script>
-    <script src="app/mobileLayout.js"></script>
-    <script src="https://use.fontawesome.com/4adac5ab44.js"></script>
-
-
 </body>
-
 </html>
