@@ -136,13 +136,50 @@ $transition-speed: 0.3s;
   z-index: 10;
   transition: all $transition-speed ease;
 
-  i {
-    display: none;
-    transition: transform $transition-speed ease;
+  .bassClef {
+    margin-top: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    
+    img {
+      display: block;
+      width: 30px;
+      height: auto;
+      margin: 0 auto;
+      filter: invert(100%); // Make the SVG white
+      transition: transform 0.3s ease;
+    }
+    
+    p {
+      color: whitesmoke;
+      padding-top: 5px;
+    }
     
     &:hover {
-      transform: scale(1.1);
+      cursor: pointer;
+      img {
+        transform: scale(1.1);
+      }
     }
+  }
+  
+  @media (max-width: 1215px) {
+    .bassClef {
+      margin-top: 10px;
+      
+      img {
+        width: 24px;
+      }
+      
+      p {
+        display: none;
+      }
+    }
+  }
+
+  // Default icon styles
+  i {
+    display: none; // Hidden by default except for bassClef
   }
 
   h1 {
@@ -158,56 +195,107 @@ $transition-speed: 0.3s;
     }
   }
 
-  // Maintain original classes but improve their styles
+  // Menu items
   .newNote, .ledger, .help, .reset {
+    margin-top: 40px;
     transition: transform $transition-speed ease;
-    margin: 2rem 0;
-    cursor: pointer;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-
+    
     img {
       width: 100px;
-      transition: all $transition-speed ease;
     }
-
+    
     p {
       color: whitesmoke;
-      margin-top: 0.5rem;
+      padding-top: 5px;
+    }
+    
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
     }
   }
 
-  // Responsive layouts
+  // Bass Clef specific styles
+  .bassClef {
+    margin-top: 40px;
+    text-align: center;
+    transition: transform $transition-speed ease;
+    
+    i {
+      display: block !important; // Force icon to show
+      font-size: 60px;
+      color: whitesmoke;
+      margin: 0 auto;
+      transition: transform $transition-speed ease;
+    }
+    
+    p {
+      color: whitesmoke;
+      padding-top: 5px;
+    }
+    
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+
+  // Responsive styles
   @media (max-width: 1415px) {
     @include mobile-header;
     height: 4rem !important;
     padding: 0.5rem;
     gap: 1.5rem;
-
+    overflow: hidden;
     h1 {
       display: none;
     }
-
+  
     i {
-      display: block;
+      display: block !important;
       font-size: 30px;
       color: white;
       padding-right: 30px;
-
+  
       &.fa-music { order: 1; }
       &.fa-bars { order: 2; }
-      &.fa-circle-o-notch { order: 3; }
-      &.fa-question-circle { order: 4; }
+      &.fa-rotate { order: 3; }
+      &.fa-circle-question { order: 4; }
     }
-
+  
     .newNote, .ledger, .help, .reset {
       margin: 0;
       padding: 0 1rem;
       
       img, p {
         display: none;
+      }
+    }
+
+
+  
+    .bassClef {
+      margin: 0;
+      padding: 0 1rem;
+      order: 5;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      
+      p {
+        display: none;
+      }
+      
+      img {
+        display: block !important;
+        width: 24px;
+        height: auto;
+        filter: invert(100%);
+        margin-right: 30px;
+      }
+  
+      &:hover img {
+        transform: scale(1.1);
       }
     }
   }
@@ -231,7 +319,7 @@ $transition-speed: 0.3s;
     and (min-device-width: 480px) 
     and (max-device-width: 920px) 
     and (orientation: landscape) {
-      height: 15% !important;
+    height: 15% !important;
   }
 }
 
@@ -422,6 +510,20 @@ $transition-speed: 0.3s;
     position: absolute;
     top: -64px;
     height: 268px;
+  }
+  .bass-clef-icon {
+    position: absolute;
+    top: 6px;
+    left: 15px;
+    z-index: -1;
+    height: 120px;
+    width: auto;
+    transform: scale(1.2);
+  }
+  .treble {
+    img {
+      z-index: -1;
+    }
   }
 }
 .line5{

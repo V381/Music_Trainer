@@ -5,13 +5,43 @@
 const Module = (function () {
     // Private variables
     const keysMap = {};
-  
+    let isBassClef = false
     // Public methods
     return {
       createKeysMap : function(){
         for (var i = 0; i < keyDivs.length; i++){
             keysMap[keyCodes[i]] = keyDivs[i];
         }
+      },
+
+
+      toggleClef() {
+        const bassClef = document.querySelector(".bassClef");
+        const trebleImg = document.querySelector(".treble img");
+        const bassIcon = document.querySelector(".bassClef img");
+        const trebleClefText = document.querySelector('.treble-clef');
+        
+        bassClef.addEventListener("click", function() {
+          isBassClef = !isBassClef;
+          
+          if (isBassClef) {
+            trebleImg.style.display = "none";
+            const bassClefImg = document.createElement("img");
+            bassClefImg.src = "icons/bass-clef-svgrepo-com.svg";
+            bassClefImg.className = "bass-clef-icon";
+            trebleImg.parentNode.appendChild(bassClefImg);
+            trebleClefText.innerHTML = "Treble clef"
+            bassIcon.src = "icons/treble.gif";
+          } else {
+            trebleImg.style.display = "block";
+            const bassClefImg = document.querySelector(".treble .bass-clef-icon");
+            if (bassClefImg) {
+              bassClefImg.remove();
+            }
+            trebleClefText.innerHTML = "Bass clef"
+            bassIcon.src = "icons/bass-clef-svgrepo-com.svg";
+          }
+        });
       },
         
       help() {
@@ -135,6 +165,7 @@ const Module = (function () {
         this.score();;
         this.keyCodesImplementation();
         this.createKeysMap()
+        this.toggleClef();
       }
     };
   })();
