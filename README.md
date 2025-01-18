@@ -35,4 +35,5 @@ Update 4 : Little refactoring
 Update 5: Added bass clef. User can learn notes on bass cleff too.
 <br>
 Update 6: UI bugs fixed for smaller screens
+<br>
 Update 7: Added statistics bar with d3
