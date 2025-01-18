@@ -29,3 +29,8 @@ Update 2 : Note Animation
 <h3>Jun 2023</h3>
 Update 3 : Design adapted for tablets and mobile phones, new icons, new layout
 Update 4 : Little refactoring
+
+
+<h3>January 2025</h3>
+Update 5: Added bass clef. User can learn notes on bass cleff too.
+Update 6: UI bugs fixed for smaller screens
