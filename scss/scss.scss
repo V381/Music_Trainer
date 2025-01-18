@@ -80,48 +80,158 @@ $wid2 : 90px;
   text-align: center;
 }
 
-.cpanel{
-  width: 200px;
-  background-color: #191919;
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin mobile-layout {
+  width: 100%;
+  @include flex-center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $cpanel-bg;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+// Variables
+$cpanel-bg: #191919;
+$cpanel-width: 200px;
+$cpanel-text: #cbcbcb;
+$cpanel-accent: #ff0000;
+$shadow-color: rgba(0, 0, 0, 0.2);
+$transition-speed: 0.3s;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin mobile-header {
+  width: 100%;
+  @include flex-center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $cpanel-bg;
+  box-shadow: 0 2px 4px $shadow-color;
+}
+
+.cpanel {
+  width: $cpanel-width;
   height: 100%;
+  background-color: $cpanel-bg;
+  position: fixed;
+  left: 0;
+  top: 0;
   box-sizing: border-box;
-  box-shadow: 2px 2px 2px black;
+  box-shadow: 2px 2px 8px $shadow-color;
   text-align: center;
   float: left;
   z-index: 10;
-  position: fixed;
+  transition: all $transition-speed ease;
+
   i {
     display: none;
+    transition: transform $transition-speed ease;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
   }
+
   h1 {
-    padding: 30px 0px 30px 0px;
+    padding: 30px 0;
     font-size: 25px;
-    text-align: center;
-    color: #cbcbcb;
+    color: $cpanel-text;
     width: inherit;
-    font-family: "Georgia";
+    font-family: "Georgia", serif;
+
     &:first-letter {
       font-size: 35px;
-      color: red;
+      color: $cpanel-accent;
     }
   }
+
+  // Maintain original classes but improve their styles
+  .newNote, .ledger, .help, .reset {
+    transition: transform $transition-speed ease;
+    margin: 2rem 0;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    img {
+      width: 100px;
+      transition: all $transition-speed ease;
+    }
+
+    p {
+      color: whitesmoke;
+      margin-top: 0.5rem;
+    }
+  }
+
+  // Responsive layouts
   @media (max-width: 1415px) {
-    height: 7% !important;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    @include mobile-header;
+    height: 4rem !important;
+    padding: 0.5rem;
+    gap: 1.5rem;
+
     h1 {
       display: none;
+    }
+
+    i {
+      display: block;
+      font-size: 30px;
+      color: white;
+      padding-right: 30px;
+
+      &.fa-music { order: 1; }
+      &.fa-bars { order: 2; }
+      &.fa-circle-o-notch { order: 3; }
+      &.fa-question-circle { order: 4; }
+    }
+
+    .newNote, .ledger, .help, .reset {
+      margin: 0;
+      padding: 0 1rem;
+      
+      img, p {
+        display: none;
+      }
     }
   }
-  @media (max-width: 1215px) and (orientation: portrait){
-    height: 3% !important;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    h1 {
-      display: none;
+
+  @media (max-width: 1215px) and (orientation: portrait) {
+    height: 3.5rem !important;
+    padding: 0.25rem;
+    gap: 1rem;
+
+    i {
+      font-size: 24px;
+      padding-right: 20px;
     }
+  }
+
+  @media (max-width: 968px) {
+    height: 8% !important;
+  }
+
+  @media only screen 
+    and (min-device-width: 480px) 
+    and (max-device-width: 920px) 
+    and (orientation: landscape) {
+      height: 15% !important;
   }
 }
 
