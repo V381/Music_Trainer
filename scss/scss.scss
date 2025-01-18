@@ -1,5 +1,6 @@
 @import "reset";
 @import "mobile-layout/mobile-layout.scss";
+@import "statistics.scss";
 $wid : 100px;
 $ws : whitesmoke;
 $black : #000000;
@@ -123,19 +124,17 @@ $transition-speed: 0.3s;
 }
 
 .cpanel {
-  width: $cpanel-width;
+  width: 200px;
   height: 100%;
-  background-color: $cpanel-bg;
+  background-color: #191919;
   position: fixed;
   left: 0;
   top: 0;
   box-sizing: border-box;
-  box-shadow: 2px 2px 8px $shadow-color;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   float: left;
-  z-index: 10;
-  transition: all $transition-speed ease;
-
+  z-index: 100;
   .bassClef {
     margin-top: 40px;
     text-align: center;
@@ -215,7 +214,6 @@ $transition-speed: 0.3s;
     }
   }
 
-  // Bass Clef specific styles
   .bassClef {
     margin-top: 40px;
     text-align: center;
@@ -239,6 +237,45 @@ $transition-speed: 0.3s;
       transform: scale(1.05);
     }
   }
+
+  .statsMenu {
+    margin-top: 40px;
+    @include imgDefault();
+    
+    i {
+        color: white;
+        font-size: 60px;
+        display: block !important;
+        margin: 0 auto;
+        transition: transform 0.3s ease;
+    }
+
+    p {
+        color: white;
+        margin-top: 5px;
+    }
+
+    &:hover {
+        cursor: pointer;
+        i {
+            transform: scale(1.1);
+        }
+    }
+
+    @media (max-width: 1415px) {
+        margin: 0;
+        padding: 0 1rem;
+        
+        i {
+            font-size: 30px;
+            padding-right: 30px;
+        }
+
+        img, p {
+            display: none;
+        }
+    }
+}
 
   // Responsive styles
   @media (max-width: 1415px) {
