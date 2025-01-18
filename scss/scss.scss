@@ -689,3 +689,111 @@ $transition-speed: 0.3s;
 
 @include meyer-reset;
 
+
+@keyframes correctAnswer {
+  0% {
+    transform: scale(1);
+    filter: brightness(100%);
+  }
+  50% {
+    transform: scale(1.2);
+    filter: brightness(150%) hue-rotate(90deg);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(100%);
+  }
+}
+
+// Keyframes for the incorrect answer animation
+@keyframes incorrectAnswer {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+// Keyframes for the score update animation
+@keyframes scoreUpdate {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.correct-answer {
+  animation: correctAnswer 0.6s ease-in-out;
+}
+
+.incorrect-answer {
+  animation: incorrectAnswer 0.4s ease-in-out;
+}
+
+.score-update {
+  animation: scoreUpdate 0.5s ease-out;
+}
+
+.feedback-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 40px;
+  border-radius: 10px;
+  color: white;
+  font-size: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1000;
+  
+  &.correct {
+    background-color: rgba(40, 167, 69, 0.9);
+  }
+  
+  &.incorrect {
+    background-color: rgba(220, 53, 69, 0.9);
+  }
+  
+  &.show {
+    opacity: 1;
+  }
+}
+
+.score {
+  .positive, .negative {
+    p {
+      transition: all 0.3s ease-in-out;
+      
+      &.highlight {
+        animation: scoreUpdate 0.5s ease-out;
+      }
+    }
+  }
+}
+
+.zz li {
+  &.clicked {
+    transform: scale(0.95);
+    transition: transform 0.1s ease-in-out;
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+}
