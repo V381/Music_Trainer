@@ -410,82 +410,61 @@ $transition-speed: 0.3s;
   width: 127px;
 }
 
-.D{
-  @include notePosition(-5px, 64px);
-}
-// -17, +56
-.E{
-  @include notePosition(-22px, 120px);
-}
-.F{
-  @include notePosition(-42px, 176px);
-}
-.G{
-  @include notePosition(-56px, 232px);
-}
-.A{
-  @include notePosition(-78px, 288px);
-}
-.B{
-  @include notePosition(-92px, 380px);
-}
-.C{
-  @include notePosition(-110px, 434px);
-}
-.D1{
-  @include notePosition(-125px, 488px);
-}
-.E1{
-  @include notePosition(-145px, 542px);
-}
-.F1{
-  @include notePosition(-160px, 596px);
-}
-.line1 .G1{
-  @include notePosition(-180px, 650px);
-}
-.E0{
-  @include notePosition(100px, 64px);
-}
-.F0{
-  @include notePosition(83px, 120px);
-}
-.G0{
-  @include notePosition(66px, 176px);
-}
-.A0{
-  @include notePosition(49px, 232px);
-}
-.B0{
-  @include notePosition(29px, 288px);
-}
-.C0{
-  @include notePosition(15px, 380px);
-}
+// Existing treble clef note positions
+.D{ @include notePosition(-5px, 64px); }
+.E{ @include notePosition(-22px, 120px); }
+.F{ @include notePosition(-42px, 176px); }
+.G{ @include notePosition(-56px, 232px); }
+.A{ @include notePosition(-78px, 288px); }
+.B{ @include notePosition(-92px, 380px); }
+.C{ @include notePosition(-110px, 434px); }
+.D1{ @include notePosition(-125px, 488px); }
+.E1{ @include notePosition(-145px, 542px); }
+.F1{ @include notePosition(-160px, 596px); }
+.G1{ @include notePosition(-180px, 650px); }
 
-.A1{
-  @include notePosition(-193px, 414px);
-}
+// Existing ledger notes (treble)
+.E0{ @include notePosition(100px, 64px); }
+.F0{ @include notePosition(83px, 120px); }
+.G0{ @include notePosition(66px, 176px); }
+.A0{ @include notePosition(49px, 232px); }
+.B0{ @include notePosition(29px, 288px); }
+.C0{ @include notePosition(15px, 380px); }
+.A1{ @include notePosition(-193px, 414px); }
+.B1{ @include notePosition(-210px, 470px); }
+.C1{ @include notePosition(-222px, 532px); }
+.D2{ @include notePosition(-241px, 586px); }
+.E2{ @include notePosition(-251px, 640px); }
+.F2{ @include notePosition(-271px, 691px); }
 
-.B1{
-  @include notePosition(-210px, 470px);
-}
+// Bass clef note positions (standard range)
+.F2{ @include notePosition(-5px, 64px); }
+.G2{ @include notePosition(-22px, 120px); }
+.A2{ @include notePosition(-42px, 176px); }
+.B2{ @include notePosition(-56px, 232px); }
+.C3{ @include notePosition(-78px, 288px); }
+.D3{ @include notePosition(-92px, 380px); }
+.E3{ @include notePosition(-110px, 434px); }
+.F3{ @include notePosition(-125px, 488px); }
+.G3{ @include notePosition(-145px, 542px); }
+.A3{ @include notePosition(-160px, 596px); }
+.B3{ @include notePosition(-180px, 650px); }
 
-.C1{
-  @include notePosition(-222px, 532px);
-}
+// Bass clef ledger notes (top)
+.C4{ @include notePosition(-193px, 414px); }
+.D4{ @include notePosition(-210px, 470px); }
+.E4{ @include notePosition(-222px, 532px); }
+.F4{ @include notePosition(-241px, 586px); }
+.G4{ @include notePosition(-251px, 640px); }
+.A4{ @include notePosition(-271px, 691px); }
 
-.D2{
-  @include notePosition(-241px, 586px);
-}
-
-.E2{
-  @include notePosition(-251px, 640px);
-}
-
-.F2{
-  @include notePosition(-271px, 691px);
-}
+// Bass clef ledger notes (bottom)
+.G1{ @include notePosition(100px, 64px); }
+.A1{ @include notePosition(83px, 120px); }
+.B1{ @include notePosition(66px, 176px); }
+.C2{ @include notePosition(49px, 232px); }
+.D2{ @include notePosition(29px, 288px); }
+.E2{ @include notePosition(15px, 380px); }
 
 .line2{
   background-color: $black;
@@ -500,28 +479,37 @@ $transition-speed: 0.3s;
   width: 100%;
   margin-top: 30px;
 }
-.line4{
+.line4 {
   background-color: $black;
   height: 5px;
   width: 100%;
   margin-top: 30px;
+  position: relative;
+  
   img {
     z-index: -1;
     position: absolute;
     top: -64px;
     height: 268px;
   }
+  
+  // Bass clef image styles
   .bass-clef-icon {
-    position: absolute;
-    top: 6px;
     left: 15px;
     z-index: -1;
     height: 120px;
     width: auto;
     transform: scale(1.2);
+    position: absolute;
+    top: -101px !important;
+    z-index: -1;
   }
+
+  // Treble clef container
   .treble {
     img {
+      position: absolute;
+      top: -170px;
       z-index: -1;
     }
   }
