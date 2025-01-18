@@ -33,4 +33,6 @@ Update 4 : Little refactoring
 
 <h3>January 2025</h3>
 Update 5: Added bass clef. User can learn notes on bass cleff too.
+<br>
 Update 6: UI bugs fixed for smaller screens
+Update 7: Added statistics bar with d3
