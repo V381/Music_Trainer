@@ -2,6 +2,7 @@ const StatisticsModule = (function() {
     let stats = {
         totalAttempts: 0,
         correctAnswers: 0,
+        challengeHistory: [],
         incorrectAnswers: 0,
         noteStats: {},
         sessionStartTime: null,
@@ -10,18 +11,59 @@ const StatisticsModule = (function() {
             current: 0,
             best: 0
         },
-        recentAnswers: []
+        recentAnswers: [],
+        bestChallengeScore: {
+            notesCompleted: 0,
+            accuracy: 0,
+            notesPerMinute: 0
+        }
     };
 
     const MAX_RECENT_ANSWERS = 10;
 
     return {
         init() {
-            stats.sessionStartTime = new Date();
-            this.loadStats();
+            stats = {
+                totalAttempts: 0,
+                correctAnswers: 0,
+                incorrectAnswers: 0,
+                noteStats: {},
+                sessionStartTime: new Date(),
+                practiceTime: 0,
+                streaks: {
+                    current: 0,
+                    best: 0
+                },
+                recentAnswers: [],
+                // Add these new properties
+                challengeHistory: [],
+                bestChallengeScore: {
+                    notesCompleted: 0,
+                    accuracy: 0,
+                    notesPerMinute: 0
+                }
+            };
+            
+            // Load saved stats if they exist
+            const savedStats = localStorage.getItem('musicTrainerStats');
+            if (savedStats) {
+                const parsedStats = JSON.parse(savedStats);
+                // Ensure challengeHistory exists in loaded stats
+                stats = {
+                    ...parsedStats,
+                    sessionStartTime: new Date(),
+                    challengeHistory: parsedStats.challengeHistory || [],
+                    bestChallengeScore: parsedStats.bestChallengeScore || {
+                        notesCompleted: 0,
+                        accuracy: 0,
+                        notesPerMinute: 0
+                    }
+                };
+            }
+        
             this.initializeNoteStats();
             this.startPracticeTimer();
-            this.updateStatsDisplay(); // Initial display update
+            this.updateStatsDisplay();
         },
 
         loadStats() {
@@ -31,6 +73,108 @@ const StatisticsModule = (function() {
                 stats.sessionStartTime = new Date();
             }
         },
+
+        updateChallengeHistory() {
+            const container = document.querySelector('.recent-activity');
+            if (!container) return;
+        
+            // Ensure challengeHistory exists
+            if (!stats.challengeHistory) {
+                stats.challengeHistory = [];
+                return;
+            }
+        
+            // Add challenge results to recent activity
+            stats.challengeHistory.forEach((challenge, index) => {
+                if (index < 5) { // Show only last 5 challenges
+                    const item = document.createElement('div');
+                    item.className = 'activity-item challenge-result';
+                    item.innerHTML = `
+                        <div class="activity-icon">
+                            <i class="fas fa-stopwatch"></i>
+                        </div>
+                        <div class="activity-details">
+                            <span class="challenge-stats">
+                                ${challenge.notesCompleted} notes | ${challenge.accuracy}% accuracy
+                            </span>
+                            <span class="timestamp">${this.getTimeAgo(new Date(challenge.date))}</span>
+                        </div>
+                    `;
+                    container.appendChild(item);
+                }
+            });
+        
+            // Update best scores display if it exists
+            const bestScoresContainer = document.querySelector('.best-challenge-scores');
+            if (bestScoresContainer && stats.bestChallengeScore) {
+                bestScoresContainer.innerHTML = `
+                    <div class="stat-item">
+                        <div class="stat-label">Best Notes Count</div>
+                        <div class="stat-value">${stats.bestChallengeScore.notesCompleted}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Best Accuracy</div>
+                        <div class="stat-value">${stats.bestChallengeScore.accuracy}%</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Best Notes/Min</div>
+                        <div class="stat-value">${stats.bestChallengeScore.notesPerMinute}</div>
+                    </div>
+                `;
+            }
+        },
+
+        saveChallengeResult(result) {
+            if (!stats.challengeHistory) {
+                stats.challengeHistory = [];
+            }
+            
+            // Add the new result to challenge history
+            stats.challengeHistory.unshift(result);
+            
+            // Keep only the last 10 challenges
+            stats.challengeHistory = stats.challengeHistory.slice(0, 10);
+            
+            // Initialize bestChallengeScore if it doesn't exist
+            if (!stats.bestChallengeScore) {
+                stats.bestChallengeScore = {
+                    notesCompleted: 0,
+                    accuracy: 0,
+                    notesPerMinute: 0
+                };
+            }
+            
+            // Update best scores if necessary
+            if (result.notesCompleted > stats.bestChallengeScore.notesCompleted) {
+                stats.bestChallengeScore.notesCompleted = result.notesCompleted;
+            }
+            if (result.accuracy > stats.bestChallengeScore.accuracy) {
+                stats.bestChallengeScore.accuracy = result.accuracy;
+            }
+            if (result.notesPerMinute > stats.bestChallengeScore.notesPerMinute) {
+                stats.bestChallengeScore.notesPerMinute = result.notesPerMinute;
+            }
+            
+            // Add to recent activity
+            if (!stats.recentAnswers) {
+                stats.recentAnswers = [];
+            }
+            
+            stats.recentAnswers.unshift({
+                type: 'challenge',
+                notesCompleted: result.notesCompleted,
+                accuracy: result.accuracy,
+                timestamp: new Date()
+            });
+            
+            // Keep only last MAX_RECENT_ANSWERS items
+            stats.recentAnswers = stats.recentAnswers.slice(0, MAX_RECENT_ANSWERS);
+            
+            this.saveStats();
+            this.updateStatsDisplay();
+            this.updateChallengeHistory();
+        },
+        
 
         saveStats() {
             localStorage.setItem('musicTrainerStats', JSON.stringify(stats));
@@ -81,21 +225,42 @@ const StatisticsModule = (function() {
         updateRecentActivity() {
             const activityContainer = document.querySelector('.recent-activity');
             if (!activityContainer) return;
-
+        
             activityContainer.innerHTML = '';
+            
             stats.recentAnswers.slice(0, 5).forEach(answer => {
-                const timeAgo = this.getTimeAgo(new Date(answer.timestamp));
                 const item = document.createElement('div');
                 item.className = 'activity-item';
-                item.innerHTML = `
-                    <div class="activity-icon ${answer.correct ? 'correct' : 'incorrect'}">
-                        <i class="fas ${answer.correct ? 'fa-check' : 'fa-times'}"></i>
-                    </div>
-                    <div class="activity-details">
-                        <span class="note-name">${answer.note}</span>
-                        <span class="timestamp">${timeAgo}</span>
-                    </div>
-                `;
+        
+                switch(answer.type) {
+                    case 'challenge':
+                        item.innerHTML = `
+                            <div class="activity-icon">
+                                <i class="fas fa-stopwatch"></i>
+                            </div>
+                            <div class="activity-details">
+                                <span class="challenge-stats">
+                                    ${answer.notesCompleted} notes | ${answer.accuracy}% accuracy
+                                </span>
+                                <span class="timestamp">${this.getTimeAgo(new Date(answer.timestamp))}</span>
+                            </div>
+                        `;
+                        break;
+                    
+                    case 'practice':
+                    case 'challenge-note':
+                        item.innerHTML = `
+                            <div class="activity-icon ${answer.correct ? 'correct' : 'incorrect'}">
+                                <i class="fas ${answer.correct ? 'fa-check' : 'fa-times'}"></i>
+                            </div>
+                            <div class="activity-details">
+                                <span class="note-name">${answer.note}</span>
+                                <span class="timestamp">${this.getTimeAgo(new Date(answer.timestamp))}</span>
+                            </div>
+                        `;
+                        break;
+                }
+                
                 activityContainer.appendChild(item);
             });
         },
@@ -107,7 +272,8 @@ const StatisticsModule = (function() {
             return `${Math.floor(seconds / 3600)}h ago`;
         },
 
-        recordAnswer(note, isCorrect) {
+        recordAnswer(note, isCorrect, type = 'practice') {
+            // Update base statistics
             stats.totalAttempts++;
             
             if (isCorrect) {
@@ -120,28 +286,54 @@ const StatisticsModule = (function() {
                 stats.incorrectAnswers++;
                 stats.streaks.current = 0;
             }
-
-            const baseNote = note.replace(/\d+/g, '');
+        
+            const baseNote = note ? note.replace(/\d+/g, '') : note;
             if (!stats.noteStats[baseNote]) {
                 stats.noteStats[baseNote] = { attempts: 0, correct: 0, incorrect: 0 };
             }
-
-            stats.noteStats[baseNote].attempts++;
-            if (isCorrect) {
-                stats.noteStats[baseNote].correct++;
-            } else {
-                stats.noteStats[baseNote].incorrect++;
+        
+            if (type === 'practice' && baseNote) {
+                stats.noteStats[baseNote].attempts++;
+                if (isCorrect) {
+                    stats.noteStats[baseNote].correct++;
+                } else {
+                    stats.noteStats[baseNote].incorrect++;
+                }
             }
-
-            stats.recentAnswers.unshift({
-                note: baseNote,
-                correct: isCorrect,
-                timestamp: new Date()
-            });
+        
+            if (!stats.recentAnswers) {
+                stats.recentAnswers = [];
+            }
+        
+            if (type === 'practice') {
+                stats.recentAnswers.unshift({
+                    type: 'practice',
+                    note: baseNote || 'Unknown',
+                    correct: isCorrect,
+                    timestamp: new Date()
+                });
+            } else if (type === 'challenge-note') {
+                stats.recentAnswers.unshift({
+                    type: 'challenge-note',
+                    note: baseNote || 'Unknown',
+                    correct: isCorrect,
+                    timestamp: new Date()
+                });
+            } else if (type === 'challenge') {
+                stats.recentAnswers.unshift({
+                    type: 'challenge',
+                    notesCompleted: note.notesCompleted,
+                    accuracy: note.accuracy,
+                    timestamp: new Date()
+                });
+            }
+        
+            // Keep only the most recent answers
             stats.recentAnswers = stats.recentAnswers.slice(0, MAX_RECENT_ANSWERS);
-
+        
+            // Save and update display
             this.saveStats();
-            this.updateStatsDisplay(); // Update immediately after recording answer
+            this.updateStatsDisplay();
         },
 
         getAccuracyForNote(note) {
@@ -167,7 +359,13 @@ const StatisticsModule = (function() {
                     current: 0,
                     best: 0
                 },
-                recentAnswers: []
+                recentAnswers: [],
+                challengeHistory: [],
+                bestChallengeScore: {
+                    notesCompleted: 0,
+                    accuracy: 0,
+                    notesPerMinute: 0
+                }
             };
             this.initializeNoteStats();
             this.saveStats();

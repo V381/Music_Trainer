@@ -174,6 +174,9 @@ const Module = (function () {
                         AnimationModule.showFeedback(true);
                         
                         StatisticsModule.recordAnswer(oldNote, true);
+                        if (ChallengeMode.isInProgress()) {
+                            ChallengeMode.recordAnswer(true);
+                        }
                         
                         setTimeout(() => {
                             Module.randomAlgorithm();
@@ -191,6 +194,9 @@ const Module = (function () {
                         AnimationModule.showFeedback(false, displayNote);
                         
                         StatisticsModule.recordAnswer(oldNote, false);
+                        if (ChallengeMode.isInProgress()) {
+                            ChallengeMode.recordAnswer(false);
+                        }
                         
                         setTimeout(() => {
                             Module.randomAlgorithm();
