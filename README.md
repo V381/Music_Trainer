@@ -39,3 +39,5 @@ Update 6: UI bugs fixed for smaller screens
 Update 7: Added statistics bar with d3
 <br>
 Update 8: Added timed challenge, added statistics for timed challenge and added author link
+<br>
+Update 9: Tutorial at beginning added
