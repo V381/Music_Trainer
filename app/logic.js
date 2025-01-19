@@ -51,7 +51,7 @@ const Module = (function () {
         toggleClef() {
             const bassClef = document.querySelector(".bassClef");
             const trebleImg = document.querySelector(".treble img");
-            const bassIcon = document.querySelector(".bassClef img");
+            const bassIcon = document.querySelector(".bassClef span");
             const trebleClefText = document.querySelector('.treble-clef');
             
             bassClef.addEventListener("click", async function() {
@@ -64,7 +64,7 @@ const Module = (function () {
                     bassClefImg.className = "bass-clef-icon";
                     trebleImg.parentNode.appendChild(bassClefImg);
                     trebleClefText.innerHTML = "Treble clef";
-                    bassIcon.src = "icons/treble.gif";
+                    bassIcon.innerHTML = "𝄞";
                     
                     currentNotes = bassNotes.standardNotes;
                     if (ledger.className === "ledgerToggle") {
@@ -77,7 +77,7 @@ const Module = (function () {
                         bassClefImg.remove();
                     }
                     trebleClefText.innerHTML = "Bass clef";
-                    bassIcon.src = "icons/bass-clef-svgrepo-com.svg";
+                    bassIcon.innerHTML = "𝄢";
                     
                     currentNotes = trebleNotes.standardNotes;
                     if (ledger.className === "ledgerToggle") {

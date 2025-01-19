@@ -850,3 +850,28 @@ $transition-speed: 0.3s;
       display: none;
   }
 }
+
+
+.bassClef {
+  margin-top: 40px;
+  text-align: center;
+  transition: all 0.3s ease;
+  
+  .clef-symbol {
+      font-size: 48px;
+      color: white;
+      line-height: 1;
+  }
+  
+  p {
+      color: whitesmoke;
+      padding-top: 5px;
+  }
+  
+  &:hover {
+      cursor: pointer;
+      .clef-symbol {
+          transform: scale(1.1);
+      }
+  }
+}
