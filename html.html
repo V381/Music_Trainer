@@ -53,6 +53,25 @@
                 <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
                 <p>Statistics</p>
             </div>
+
+            <div class="challengeMode">
+                <i class="fa-solid fa-stopwatch" aria-hidden="true"></i>
+                <p>Challenge Mode</p>
+            </div>
+            
+            <div class="timer-container hidden">
+                <div class="timer">
+                    <span class="minutes">01</span>:<span class="seconds">00</span>
+                </div>
+                <div class="challenge-stats hidden">
+                    <div class="notes-completed">Notes: <span>0</span></div>
+                    <div class="accuracy">Accuracy: <span>0%</span></div>
+                </div>
+            </div>
+
+            <div class="author-info">
+                <p>Author: <a href="https://www.github.com/V381">Pavle Paunovic - by musician for musicians</a> &nbsp;&nbsp;Built with <i class="fas fa-heart" style="color: #ff4d4d;"></i></p>
+            </div>
         
         
             <div class="score">
@@ -130,6 +149,11 @@
                     <div class="stat-label">Practice Time</div>
                     <div class="stat-value time practice-time">00:00:00</div>
                 </div>
+                <div class="stats-section">
+                    <h3>Challenge Mode Records</h3>
+                    <div class="best-challenge-scores">
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -159,6 +183,7 @@
 
     <script src="app/external/jquery-2.1.1.min.js"></script>
     <script src="app/animations.js"></script>
+    <script src="app/challengeMode.js"></script>
     <script src="app/statistics.js"></script>
     <script src="app/logic.js"></script>
 </body>

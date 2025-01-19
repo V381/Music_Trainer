@@ -124,239 +124,77 @@ $transition-speed: 0.3s;
 }
 
 .cpanel {
-  width: 200px;
-  height: 100%;
+  width: 100%;
+  height: 4rem;
   background-color: #191919;
   position: fixed;
-  left: 0;
   top: 0;
-  box-sizing: border-box;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.5rem;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  float: left;
   z-index: 100;
-  .bassClef {
-    margin-top: 40px;
-    text-align: center;
-    transition: all 0.3s ease;
-    
-    img {
-      display: block;
-      width: 30px;
-      height: auto;
-      margin: 0 auto;
-      filter: invert(100%); // Make the SVG white
-      transition: transform 0.3s ease;
-    }
-    
-    p {
-      color: whitesmoke;
-      padding-top: 5px;
-    }
-    
-    &:hover {
-      cursor: pointer;
-      img {
-        transform: scale(1.1);
-      }
-    }
-  }
-  
-  @media (max-width: 1215px) {
-    .bassClef {
-      margin-top: 10px;
-      
-      img {
-        width: 24px;
-      }
-      
-      p {
-        display: none;
-      }
-    }
-  }
-
-  // Default icon styles
-  i {
-    display: none; // Hidden by default except for bassClef
-  }
 
   h1 {
-    padding: 30px 0;
-    font-size: 25px;
-    color: $cpanel-text;
-    width: inherit;
-    font-family: "Georgia", serif;
+      font-size: 1.5rem;
+      color: $cpanel-text;
+      margin-right: 2rem;
 
-    &:first-letter {
-      font-size: 35px;
-      color: $cpanel-accent;
-    }
+      &:first-letter {
+          font-size: 2rem;
+          color: $cpanel-accent;
+      }
   }
 
-  // Menu items
-  .newNote, .ledger, .help, .reset {
-    margin-top: 40px;
-    transition: transform $transition-speed ease;
-    
-    img {
-      width: 100px;
-    }
-    
-    p {
-      color: whitesmoke;
-      padding-top: 5px;
-    }
-    
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.05);
-    }
-  }
-
-  .bassClef {
-    margin-top: 40px;
-    text-align: center;
-    transition: transform $transition-speed ease;
-    
-    i {
-      display: block !important; // Force icon to show
-      font-size: 60px;
-      color: whitesmoke;
-      margin: 0 auto;
-      transition: transform $transition-speed ease;
-    }
-    
-    p {
-      color: whitesmoke;
-      padding-top: 5px;
-    }
-    
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.05);
-    }
-  }
-
-  .statsMenu {
-    margin-top: 40px;
-    @include imgDefault();
-    
-    i {
-        color: white;
-        font-size: 60px;
-        display: block !important;
-        margin: 0 auto;
-        transition: transform 0.3s ease;
-    }
-
-    p {
-        color: white;
-        margin-top: 5px;
-    }
-
-    &:hover {
-        cursor: pointer;
-        i {
-            transform: scale(1.1);
-        }
-    }
-
-    @media (max-width: 1415px) {
-        margin: 0;
-        padding: 0 1rem;
-        
-        i {
-            font-size: 30px;
-            padding-right: 30px;
-        }
-
-        img, p {
-            display: none;
-        }
-    }
-}
-
-  // Responsive styles
-  @media (max-width: 1415px) {
-    @include mobile-header;
-    height: 4rem !important;
-    padding: 0.5rem;
-    gap: 1.5rem;
-    overflow: hidden;
-    h1 {
-      display: none;
-    }
-  
-    i {
+  // Show icons by default for all screen sizes
+  i {
       display: block !important;
       font-size: 30px;
       color: white;
       padding-right: 30px;
-  
-      &.fa-music { order: 1; }
-      &.fa-bars { order: 2; }
-      &.fa-rotate { order: 3; }
-      &.fa-circle-question { order: 4; }
-    }
-  
-    .newNote, .ledger, .help, .reset {
+  }
+
+  // Style all control elements consistently
+  .newNote, .ledger, .help, .reset, .bassClef, .challengeMode, .statsMenu {
       margin: 0;
       padding: 0 1rem;
-      
-      img, p {
-        display: none;
-      }
-    }
-
-
-  
-    .bassClef {
-      margin: 0;
-      padding: 0 1rem;
-      order: 5;
       display: flex;
       align-items: center;
-      height: 100%;
       
-      p {
-        display: none;
+      img, p {
+          display: none;
       }
-      
-      img {
-        display: block !important;
-        width: 24px;
-        height: auto;
-        filter: invert(100%);
-        margin-right: 30px;
+
+      i {
+          font-size: 24px;
+          padding-right: 20px;
       }
-  
-      &:hover img {
-        transform: scale(1.1);
+
+      &:hover {
+          cursor: pointer;
+          i {
+              transform: scale(1.1);
+              transition: transform 0.3s ease;
+          }
       }
-    }
   }
 
-  @media (max-width: 1215px) and (orientation: portrait) {
-    height: 3.5rem !important;
-    padding: 0.25rem;
-    gap: 1rem;
+  .score {
+      position: static;
+      display: flex;
+      margin-left: auto;
+      padding-right: 2rem;
 
-    i {
-      font-size: 24px;
-      padding-right: 20px;
-    }
-  }
-
-  @media (max-width: 968px) {
-    height: 8% !important;
-  }
-
-  @media only screen 
-    and (min-device-width: 480px) 
-    and (max-device-width: 920px) 
-    and (orientation: landscape) {
-    height: 15% !important;
+      .positive, .negative {
+          padding: 0 1rem;
+          p {
+              display: block;
+              font-size: 24px;
+          }
+      }
   }
 }
 
@@ -638,10 +476,14 @@ $transition-speed: 0.3s;
 
 @media (max-width: 1215px) {
   .cpanel {
-
-    i {
-      display: block;
+    gap: 1rem;
+    h1 {
+      display: none;
     }
+    i {
+      font-size: 24px;
+      padding-right: 20px;
+  }
 
     .ledger {
       margin-top: 10px;
@@ -832,5 +674,179 @@ $transition-speed: 0.3s;
   
   &:active {
     transform: scale(0.95);
+  }
+}
+
+
+.challengeMode {
+  margin-top: 40px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  
+  i {
+      display: block;
+      font-size: 60px;
+      color: whitesmoke;
+      margin: 0 auto;
+      transition: transform 0.3s ease;
+  }
+  
+  p {
+      color: whitesmoke;
+      padding-top: 5px;
+  }
+  
+  &:hover {
+      cursor: pointer;
+      i {
+          transform: scale(1.1);
+      }
+  }
+}
+
+.timer-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(25, 25, 25, 0.9);
+  padding: 15px 25px;
+  border-radius: 10px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  
+  &.hidden {
+      display: none;
+  }
+}
+
+.timer {
+  font-size: 2.5rem;
+  font-family: monospace;
+  color: #ffffff;
+}
+
+.challenge-stats {
+  display: flex;
+  gap: 20px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  
+  &.hidden {
+      display: none;
+  }
+}
+
+@media (max-width: 1415px) {
+  .challengeMode {
+      margin: 0;
+      padding: 0 1rem;
+      
+      i {
+          font-size: 30px;
+          padding-right: 30px;
+      }
+
+      p {
+          display: none;
+      }
+  }
+}
+
+.challenge-results-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  
+  .modal-content {
+      background-color: #191919;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      
+      h2 {
+          color: #ffffff;
+          font-size: 1.8rem;
+          margin-bottom: 20px;
+      }
+      
+      .results {
+          margin-bottom: 25px;
+          
+          p {
+              color: #ffffff;
+              font-size: 1.2rem;
+              margin: 10px 0;
+          }
+      }
+      
+      .close-modal {
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 1.1rem;
+          transition: background-color 0.3s ease;
+          
+          &:hover {
+              background-color: #45a049;
+          }
+      }
+  }
+}
+
+
+.stats-panel {
+  top: 4rem; 
+  height: calc(100vh - 4rem);
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+  
+  p {
+      color: whitesmoke;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      a {
+        color: white;
+      }
+  }
+
+  i {
+      font-size: 14px !important;
+      padding-right: 0 !important;
+      animation: heartbeat 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+// Add this to your media queries for responsive design
+@media (max-width: 1215px) {
+  .author-info {
+      display: none;
   }
 }
