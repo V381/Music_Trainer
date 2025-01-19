@@ -262,7 +262,7 @@ const Module = (function () {
             AnimationModule.init();
             StatisticsModule.init();
             this.initializeStatsPanel();
-            
+            TutorialModule.init();
         }
     };
 })();
