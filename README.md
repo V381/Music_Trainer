@@ -37,3 +37,5 @@ Update 5: Added bass clef. User can learn notes on bass cleff too.
 Update 6: UI bugs fixed for smaller screens
 <br>
 Update 7: Added statistics bar with d3
+<br>
+Update 8: Added timed challenge, added statistics for timed challenge and added author link
