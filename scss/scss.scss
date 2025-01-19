@@ -875,3 +875,126 @@ $transition-speed: 0.3s;
       }
   }
 }
+
+.tutorial-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9998;
+  pointer-events: none;
+}
+
+.tutorial-tooltip {
+  position: fixed;
+  background: #191919;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 300px;
+  z-index: 10000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: tooltip-fade-in 0.3s ease-out;
+
+  h3 {
+      color: #ffffff;
+      margin: 0 0 10px 0;
+      font-size: 1.2rem;
+  }
+
+  p {
+      color: #cbcbcb;
+      margin: 0 0 15px 0;
+      line-height: 1.4;
+  }
+
+  .tutorial-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+  }
+
+  .tutorial-progress {
+      color: #999;
+      font-size: 0.9rem;
+  }
+
+  .tutorial-buttons {
+      display: flex;
+      gap: 10px;
+  }
+
+  button {
+      background: #333;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+
+      &:hover {
+          background: #444;
+      }
+
+      &.tutorial-next,
+      &.tutorial-finish {
+          background: #4CAF50;
+
+          &:hover {
+              background: #45a049;
+          }
+      }
+  }
+}
+
+.tutorial-highlight {
+  position: relative;
+  z-index: 9999;
+  animation: highlight-pulse 2s infinite;
+}
+
+@keyframes tooltip-fade-in {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes highlight-pulse {
+  0% {
+      box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+  }
+  70% {
+      box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+  }
+  100% {
+      box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .tutorial-tooltip {
+      max-width: 280px;
+      padding: 15px;
+      
+      h3 {
+          font-size: 1.1rem;
+      }
+      
+      p {
+          font-size: 0.9rem;
+      }
+      
+      button {
+          padding: 6px 12px;
+          font-size: 0.9rem;
+      }
+  }
+}
